@@ -5,7 +5,7 @@
 void setup(){
   
   Serial.begin(9600);
-  Wire.begin();
+  Wire.begin(5,4, 100000); // pin 5 (SDA),pin 4 (SCL), I2C frequency 100khz
   
   
   Wire.beginTransmission(addr); //start talking
