@@ -6,8 +6,8 @@
 SSD1306  display(0x3c, 5, 4);
 
 NTPtime NTPch("ch.pool.ntp.org");   // Choose server pool as required
-char *ssid      = "174-2.4";               // Set you WiFi SSID
-char *password  = "mzenvQswr3Yy";               // Set you WiFi password
+char *ssid      = "Iphone (Arseniy)";               // Set you WiFi SSID
+char *password  = "NeverNo!";               // Set you WiFi password
 
 
 strDateTime dateTime;
