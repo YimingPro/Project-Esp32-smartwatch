@@ -1,9 +1,9 @@
 
 #include <NTPtimeESP32.h>
-#include "SSD1306.h" // alias for `#include "SSD1306Wire.h"'
+#include "SH1106.h" // alias for `#include "SSD1306Wire.h"'
 
 // Initialize the OLED display using Wire library
-SSD1306  display(0x3c, 5, 4);
+SH1106  display(0x3c, 17, 16);
 
 NTPtime NTPch("ch.pool.ntp.org");   // Choose server pool as required
 char *ssid      = "174-2.4";               // Set you WiFi SSID
