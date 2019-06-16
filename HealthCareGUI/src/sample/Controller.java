@@ -90,9 +90,11 @@ public class Controller {
 
     @FXML
     void openHeartPage(MouseEvent event) {
-        HTTPGet httpGet= new HTTPGet();
+        HTTPGet httpGet = new HTTPGet();
+        JsonHttpParser jsonHttpParser = new JsonHttpParser();
 
-        System.out.println(httpGet.getHTML("https://io.adafruit.com/api/v2/LuciferCoder01/feeds?X-AIO-Key=3ef67556faea4d279b87ef2b38576bbe"));
+        System.out.println(jsonHttpParser.parseHeartRate(
+                httpGet.getHTML("https://io.adafruit.com/api/v2/LuciferCoder01/feeds/watchdata/data")));
 
         menu.setVisible(true);
         homePage.setVisible(false);
