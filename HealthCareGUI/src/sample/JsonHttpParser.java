@@ -9,7 +9,11 @@ import java.util.HashMap;
 
 public class JsonHttpParser {
 
-    public HashMap<String, Integer> parseHeartRate(String messg) {
+    public HashMap<String, Integer> parseHeartRate(String ending) {
+
+        HTTPGet httpGet = new HTTPGet();
+
+        String messg = httpGet.getHTML("https://io.adafruit.com/api/v2/LuciferCoder01/feeds"+ending);
 
         HashMap<String, Integer> heartRateData = new HashMap<String, Integer>();
         try {
@@ -24,7 +28,7 @@ public class JsonHttpParser {
                         +object.getAsJsonObject().get("created_at").toString()
                         +"\tvalue:"+
                         object.getAsJsonObject().get("value").toString() );
-                
+
                 heartRateData.put(object.getAsJsonObject().get("created_at").toString(),object.getAsJsonObject().get("value").getAsInt());
 
             }

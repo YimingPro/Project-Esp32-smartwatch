@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.AreaChart?>
 <?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -28,14 +28,14 @@
       </Pane>
       <Pane fx:id="heartPage" layoutX="89.0" prefHeight="400.0" prefWidth="511.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="89.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <AreaChart fx:id="heartChart" layoutX="14.0" layoutY="14.0" prefHeight="343.0" prefWidth="484.0">
+            <LineChart fx:id="heartChart" animated="false" layoutX="2.0" layoutY="14.0" prefHeight="385.0" prefWidth="496.0" title="BPM">
               <xAxis>
                 <CategoryAxis fx:id="time" label="Time" side="BOTTOM" />
               </xAxis>
               <yAxis>
                 <NumberAxis fx:id="bpm" label="BPM" side="LEFT" />
               </yAxis>
-            </AreaChart>
+            </LineChart>
          </children>
       </Pane>
       <Pane fx:id="menu" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">

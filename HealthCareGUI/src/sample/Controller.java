@@ -1,11 +1,10 @@
 package sample;
 
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
-import javafx.scene.chart.AreaChart;
-import javafx.scene.chart.CategoryAxis;
-import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -41,7 +40,7 @@ public class Controller {
     private Pane heartPage; // Value injected by FXMLLoader
 
     @FXML // fx:id="heartChart"
-    private AreaChart<?, ?> heartChart; // Value injected by FXMLLoader
+    private LineChart<?, ?> heartChart; // Value injected by FXMLLoader
 
     @FXML // fx:id="time"
     private CategoryAxis time; // Value injected by FXMLLoader
@@ -75,6 +74,8 @@ public class Controller {
         heartPage.setVisible(false);
         emergencyPage.setVisible(false);
         aboutPage.setVisible(true);
+
+
     }
 
     @FXML
@@ -86,21 +87,30 @@ public class Controller {
         aboutPage.setVisible(false);
 
         callHelpMssg.setVisible(false);
+
+
     }
 
     @FXML
     void openHeartPage(MouseEvent event) {
-        HTTPGet httpGet = new HTTPGet();
-        JsonHttpParser jsonHttpParser = new JsonHttpParser();
-
-        System.out.println(jsonHttpParser.parseHeartRate(
-                httpGet.getHTML("https://io.adafruit.com/api/v2/LuciferCoder01/feeds/watchdata/data")));
+        heartChart.getData().clear();
+        heartChart.setLegendVisible(false);
 
         menu.setVisible(true);
         homePage.setVisible(false);
         heartPage.setVisible(true);
         emergencyPage.setVisible(false);
         aboutPage.setVisible(false);
+
+        JsonHttpParser jsonHttpParser = new JsonHttpParser();
+
+
+
+        heartChart.getData().
+                addAll(
+                addHeartRateData(
+                jsonHttpParser.
+                parseHeartRate("/watchdata/data")));
     }
 
     @FXML
@@ -110,6 +120,7 @@ public class Controller {
         heartPage.setVisible(false);
         emergencyPage.setVisible(false);
         aboutPage.setVisible(false);
+
     }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
@@ -129,5 +140,15 @@ public class Controller {
         assert callHelpMssg != null : "fx:id=\"callHelpMssg\" was not injected: check your FXML file 'HeartBeatUser.fxml'.";
         assert aboutPage != null : "fx:id=\"aboutPage\" was not injected: check your FXML file 'HeartBeatUser.fxml'.";
 
+    }
+
+    XYChart.Series addHeartRateData(HashMap<String,Integer> data){
+        XYChart.Series heartrate = new XYChart.Series();
+
+        for (String timestamp: data.keySet()) {
+            heartrate.getData().add(new XYChart.Data(timestamp,data.get(timestamp)));
+        }
+
+        return heartrate;
     }
 }
