@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #EAE7DC;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <Pane fx:id="homePage" layoutX="89.0" layoutY="-61.0" prefHeight="400.0" prefWidth="511.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="387.0" fitWidth="600.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/blood-pressure-3312513_1280-1024x512.png" />
+               </image>
+            </ImageView>
+            <Text fill="#e98074" layoutX="122.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" text="This is the user iterface" wrappingWidth="355.2060546875">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane fx:id="heartPage" layoutX="89.0" prefHeight="400.0" prefWidth="511.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="89.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <LineChart fx:id="heartChart" animated="false" layoutX="2.0" layoutY="14.0" prefHeight="385.0" prefWidth="496.0" title="BPM">
+              <xAxis>
+                <CategoryAxis fx:id="time" label="Time" side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis fx:id="bpm" label="BPM" side="LEFT" />
+              </yAxis>
+            </LineChart>
+         </children>
+      </Pane>
+      <Pane fx:id="menu" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fx:id="homeBttn" fitHeight="54.0" fitWidth="56.0" layoutX="14.0" layoutY="44.0" onMouseClicked="#openHomePage">
+               <image>
+                  <Image url="@../images/icons8-a_home.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="heartBttn" fitHeight="54.0" fitWidth="56.0" layoutX="14.0" layoutY="137.0" onMouseClicked="#openHeartPage">
+               <image>
+                  <Image url="@../images/icons8-like.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="emergencyBttn" fitHeight="54.0" fitWidth="56.0" layoutX="14.0" layoutY="226.0" onMouseClicked="#openEmergencyPage">
+               <image>
+                  <Image url="@../images/icons8-siren.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="aboutBttn" fitHeight="54.0" fitWidth="56.0" layoutX="14.0" layoutY="308.0" onMouseClicked="#openAboutPage">
+               <image>
+                  <Image url="@../images/icons8-about.png" />
+               </image>
+            </ImageView>
+            <Text fill="#8e8d8a" layoutX="498.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Created by: group 2" wrappingWidth="101.82080078125">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane fx:id="emergencyPage" layoutX="89.0" prefHeight="400.0" prefWidth="511.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="89.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fx:id="callHelpBttn" fitWidth="128.0" layoutX="180.0" layoutY="150.0" onMouseClicked="#callHelp">
+               <image>
+                  <Image url="@../images/icons8-hospital_room.png" />
+               </image>
+            </ImageView>
+            <Text fill="#e98074" layoutX="131.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Press to call emergency">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text fx:id="callHelpMssg" fill="#e85a4f" layoutX="134.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Help is comming">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane fx:id="aboutPage" layoutX="89.0" prefHeight="400.0" prefWidth="511.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="89.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Text fill="#8e8d8a" layoutX="205.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="About us:">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="54.0" fitWidth="56.0" layoutX="38.0" layoutY="241.0">
+               <image>
+                  <Image url="@../images/icons8-engineer.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="66.0" fitWidth="68.0" layoutX="29.0" layoutY="37.0">
+               <image>
+                  <Image url="@../images/icons8-development_skill.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="54.0" fitWidth="56.0" layoutX="38.0" layoutY="308.0">
+               <image>
+                  <Image url="@../images/icons8-engineer.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="54.0" fitWidth="56.0" layoutX="38.0" layoutY="174.0">
+               <image>
+                  <Image url="@../images/icons8-engineer.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="66.0" fitWidth="68.0" layoutX="32.0" layoutY="104.0">
+               <image>
+                  <Image url="@../images/icons8-development_skill.png" />
+               </image>
+            </ImageView>
+            <Text fill="#807361" layoutX="145.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Arsenii Belyakov - software developer">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fill="#807361" layoutX="145.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Yming Chen - software developer">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fill="#807361" layoutX="145.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dimitar Rangelov - engineer">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fill="#807361" layoutX="145.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Junaid Qazi - engineer">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fill="#807361" layoutX="145.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tianru Cao - engineer">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
