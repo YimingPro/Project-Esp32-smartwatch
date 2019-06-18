@@ -1,15 +1,14 @@
 #include <Wire.h>
 #include "MAX30105.h"
-
 #include "heartRate.h"
-
+#define addr 0x1E //I2C Address for The HMC5883
 MAX30105 particleSensor;
 
 const byte RATE_SIZE = 4; //Increase this for more averaging. 4 is good.
 byte rates[RATE_SIZE]; //Array of heart rates
 byte rateSpot = 0;
 long lastBeat = 0; //Time at which the last beat occurred
-
+void gyr();
 float beatsPerMinute;
 int beatAvg;
 
@@ -56,15 +55,54 @@ void loop()
     }
   }
 
-  Serial.print("IR=");
-  Serial.print(irValue);
-  Serial.print(", BPM=");
-  Serial.print(beatsPerMinute);
-  Serial.print(", Avg BPM=");
+ // Serial.print("IR=");
+ // Serial.print(irValue);
+//Serial.print(", BPM=");
+ // Serial.print(",");
+ // Serial.print(beatsPerMinute);
+ //   Serial.print(",");
+ // Serial.print(", Avg BPM=");
   Serial.print(beatAvg);
 
-  if (irValue < 50000)
-    Serial.print(" No finger?");
+  //if (irValue < 50000)
+//    Serial.print(" No finger?");
+  gyr();
+   Serial.println("");
 
-  Serial.println();
+}
+void gyr()
+{
+   Wire.begin();  
+  Wire.beginTransmission(addr); //start talking
+  Wire.write(0x02); // Set the Register
+  Wire.write(0x00); // Tell the HMC5883 to Continuously Measure
+  Wire.endTransmission();
+  int x,y,z; //triple axis data
+
+  //Tell the HMC what regist to begin writing data into
+  Wire.beginTransmission(addr);
+  Wire.write(0x03); //start with register 3.
+  Wire.endTransmission();
+
+   //Read the data.. 2 bytes for each axis.. 6 total bytes
+  Wire.requestFrom(addr, 6);
+  if(6<=Wire.available()){
+    x = Wire.read()<<8; //MSB  x 
+    x |= Wire.read(); //LSB  x
+    z = Wire.read()<<8; //MSB  z
+    z |= Wire.read(); //LSB z
+    y = Wire.read()<<8; //MSB y
+    y |= Wire.read(); //LSB y
+  }
+  
+  // Show Values
+ // Serial.print("X Value: ");
+  Serial.print(",");
+  Serial.print(x);
+ // Serial.print("Y Value: ");
+  Serial.print(",");
+  Serial.print(y);
+ // Serial.print("Z Value: ");
+  Serial.print(",");
+  Serial.print(z);
 }
